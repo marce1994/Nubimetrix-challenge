@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebApi.Services.Dto.MercadoLibre.Country;
-using WebApi.Services.Dto.MercadoLibre.Search;
 
 namespace WebApi.Services.Contract
 {
     public interface IMercadoLibre
     {
-        Task<CountryResponse> Countries();
+        Task<IEnumerable<Country>> Countries();
         
-        Task<SearchResponse> Search(string query);
+        Task<dynamic> Search(string query);
     }
 }

@@ -1,106 +1,106 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 namespace WebApi.Services.Dto.MercadoLibre.Search
 {
 
     public class Result
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonPropertyName("site_id")]
+        [JsonProperty("site_id")]
         public string SiteId { get; set; }
 
-        [JsonPropertyName("title")]
+        [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonPropertyName("seller")]
+        [JsonProperty("seller")]
         public Seller Seller { get; set; }
 
-        [JsonPropertyName("price")]
+        [JsonProperty("price")]
         public float Price { get; set; }
 
-        //[JsonPropertyName("prices")]
-        //public List<Price> Prices { get; set; }
+        [JsonProperty("prices")]
+        public object Prices { get; set; }
 
-        [JsonPropertyName("sale_price")]
+        [JsonProperty("sale_price")]
         public object SalePrice { get; set; }
 
-        [JsonPropertyName("currency_id")]
+        [JsonProperty("currency_id")]
         public string CurrencyId { get; set; }
 
-        [JsonPropertyName("available_quantity")]
+        [JsonProperty("available_quantity")]
         public int AvailableQuantity { get; set; }
 
-        [JsonPropertyName("sold_quantity")]
+        [JsonProperty("sold_quantity")]
         public int SoldQuantity { get; set; }
 
-        [JsonPropertyName("buying_mode")]
+        [JsonProperty("buying_mode")]
         public string BuyingMode { get; set; }
 
-        [JsonPropertyName("listing_type_id")]
+        [JsonProperty("listing_type_id")]
         public string ListingTypeId { get; set; }
 
-        [JsonPropertyName("stop_time")]
+        [JsonProperty("stop_time")]
         public DateTime StopTime { get; set; }
 
-        [JsonPropertyName("condition")]
+        [JsonProperty("condition")]
         public string Condition { get; set; }
 
-        [JsonPropertyName("permalink")]
+        [JsonProperty("permalink")]
         public string Permalink { get; set; }
 
-        [JsonPropertyName("thumbnail")]
+        [JsonProperty("thumbnail")]
         public string Thumbnail { get; set; }
 
-        [JsonPropertyName("thumbnail_id")]
+        [JsonProperty("thumbnail_id")]
         public string ThumbnailId { get; set; }
 
-        [JsonPropertyName("accepts_mercadopago")]
+        [JsonProperty("accepts_mercadopago")]
         public bool AcceptsMercadopago { get; set; }
 
-        [JsonPropertyName("installments")]
-        public Installments Installments { get; set; }
+        [JsonProperty("installments")]
+        public object Installments { get; set; }
 
-        [JsonPropertyName("address")]
-        public Address Address { get; set; }
+        [JsonProperty("address")]
+        public object Address { get; set; }
 
-        [JsonPropertyName("shipping")]
-        public Shipping Shipping { get; set; }
+        [JsonProperty("shipping")]
+        public object Shipping { get; set; }
 
-        [JsonPropertyName("seller_address")]
-        public SellerAddress SellerAddress { get; set; }
+        [JsonProperty("seller_address")]
+        public object SellerAddress { get; set; }
 
-        [JsonPropertyName("attributes")]
-        public List<Attribute> Attributes { get; set; }
+        [JsonProperty("attributes")]
+        public List<object> Attributes { get; set; }
 
-        [JsonPropertyName("original_price")]
+        [JsonProperty("original_price")]
         public int? OriginalPrice { get; set; }
 
-        [JsonPropertyName("category_id")]
+        [JsonProperty("category_id")]
         public string CategoryId { get; set; }
 
-        [JsonPropertyName("official_store_id")]
+        [JsonProperty("official_store_id")]
         public int? OfficialStoreId { get; set; }
 
-        [JsonPropertyName("domain_id")]
+        [JsonProperty("domain_id")]
         public string DomainId { get; set; }
 
-        [JsonPropertyName("catalog_product_id")]
+        [JsonProperty("catalog_product_id")]
         public string CatalogProductId { get; set; }
 
-        [JsonPropertyName("tags")]
-        public List<string> Tags { get; set; }
+        [JsonProperty("tags")]
+        public List<object> Tags { get; set; }
 
-        [JsonPropertyName("catalog_listing")]
+        [JsonProperty("catalog_listing")]
         public bool CatalogListing { get; set; }
 
-        [JsonPropertyName("order_backend")]
+        [JsonProperty("order_backend")]
         public int OrderBackend { get; set; }
 
-        [JsonPropertyName("differential_pricing")]
-        public DifferentialPricing DifferentialPricing { get; set; }
+        [JsonProperty("differential_pricing")]
+        public object DifferentialPricing { get; set; }
     }
 
 }

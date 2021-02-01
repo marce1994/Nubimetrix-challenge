@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Flurl.Http;
 using WebApi.Services.Contract;
 using WebApi.Services.Dto.MercadoLibre.Country;
-using WebApi.Services.Dto.MercadoLibre.Search;
 
 namespace WebApi.Services.Implementation
 {
@@ -14,14 +14,15 @@ namespace WebApi.Services.Implementation
 
         }
 
-        public async Task<CountryResponse> Countries()
+        public async Task<IEnumerable<Country>> Countries()
         {
-            return await $"{BaseUrl}/classified_locations/countries".GetJsonAsync<CountryResponse>();
+            return await $"{BaseUrl}/classified_locations/countries".GetJsonAsync<IEnumerable<Country>>();
         }
 
-        public async Task<SearchResponse> Search(string query)
+        public async Task<dynamic> Search(string query)
         {
-            return await $"{BaseUrl}/sites/MLA/search?q={query}".GetJsonAsync<SearchResponse>();
+            var res = await $"{BaseUrl}/sites/MLA/search?q={query}".GetJsonAsync();
+            return res;
         }
     }
 }

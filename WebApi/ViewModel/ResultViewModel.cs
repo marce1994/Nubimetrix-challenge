@@ -1,25 +1,17 @@
-﻿using System.Text.Json.Serialization;
-
-namespace WebApi.ViewModel
+﻿namespace WebApi.ViewModel
 {
     public class ResultViewModel
     {
-        [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string id { get; set; }
 
-        [JsonPropertyName("site_id")]
-        public string SiteId { get; set; }
+        public string site_id { get; set; }
 
-        [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string title { get; set; }
 
-        [JsonPropertyName("price")]
-        public int Price { get; set; }
+        public int price { get; set; }
 
-        [JsonPropertyName("seller_id")]
-        public int SellerId { get; set; }
+        public int seller_id { get; set; }
 
-        [JsonPropertyName("permalink")]
-        public string Permalink { get; set; }
+        public string permalink { get; set; }
     }
 }

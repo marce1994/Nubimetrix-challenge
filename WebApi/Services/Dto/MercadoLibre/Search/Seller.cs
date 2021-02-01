@@ -1,34 +1,34 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+
 namespace WebApi.Services.Dto.MercadoLibre.Search
 {
 
     public class Seller
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonPropertyName("permalink")]
+        [JsonProperty("permalink")]
         public string Permalink { get; set; }
 
-        [JsonPropertyName("registration_date")]
+        [JsonProperty("registration_date")]
         public DateTime RegistrationDate { get; set; }
 
-        [JsonPropertyName("car_dealer")]
+        [JsonProperty("car_dealer")]
         public bool CarDealer { get; set; }
 
-        [JsonPropertyName("real_estate_agency")]
+        [JsonProperty("real_estate_agency")]
         public bool RealEstateAgency { get; set; }
 
-        [JsonPropertyName("tags")]
+        [JsonProperty("tags")]
         public List<string> Tags { get; set; }
 
-        [JsonPropertyName("seller_reputation")]
-        public SellerReputation SellerReputation { get; set; }
+        [JsonProperty("seller_reputation")]
+        public object SellerReputation { get; set; }
 
-        [JsonPropertyName("eshop")]
-        public Eshop Eshop { get; set; }
+        [JsonProperty("eshop")]
+        public object Eshop { get; set; }
     }
-
 }

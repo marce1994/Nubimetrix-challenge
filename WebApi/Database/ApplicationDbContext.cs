@@ -11,5 +11,9 @@ namespace WebApi.Database
 
         public DbSet<User> Users { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().Property(x => x.Id).ValueGeneratedOnAdd();
+        }
     }
 }

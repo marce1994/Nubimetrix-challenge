@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WebApi.Database;
 using AutoMapper;
@@ -25,8 +24,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AppDB")));
-            services.AddControllers();
 
+            services.AddControllers()
+                .AddNewtonsoftJson(); // Return to old newtonsoft json for flurl compatibility.
+
+            // Services DI
             services.AddTransient<IMercadoLibre, MercadoLibre>();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
@@ -37,15 +39,21 @@ namespace WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app/*, IWebHostEnvironment env*/, ApplicationDbContext appDb)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
-            }
+            appDb.Database.Migrate();
+            
+            //if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1");
+                c.RoutePrefix = string.Empty;  // Set Swagger UI at apps root
+            });
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

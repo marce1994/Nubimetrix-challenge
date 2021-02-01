@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApi.Services.Contract;
 using WebApi.ViewModel;
@@ -22,8 +23,9 @@ namespace WebApi.Controllers
         [HttpGet("{termino}")]
         public async Task<IActionResult> Get(string termino)
         {
-            var searchResult = await _mercadoLibre.Search(termino);
-            return Ok(_mapper.Map<SearchResponseViewModel>(searchResult));
+            dynamic searchResult = await _mercadoLibre.Search(termino);
+            searchResult.results = _mapper.Map<IEnumerable<ResultViewModel>>(searchResult.results);
+            return Ok(searchResult);
         }
     }
 }

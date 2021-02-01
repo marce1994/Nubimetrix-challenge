@@ -23,7 +23,7 @@ namespace WebApi.Controllers
         public async Task<ActionResult<IEnumerable<Country>>> Get(string pais)
         {
             var countriesResponse = await _mercadoLibre.Countries();
-            var country = countriesResponse.Countries.SingleOrDefault(x => x.Id.Equals(pais, System.StringComparison.InvariantCultureIgnoreCase));
+            var country = countriesResponse.SingleOrDefault(x => x.Id.Equals(pais, System.StringComparison.InvariantCultureIgnoreCase));
 
             if (UnauthorizedCountries.Contains(country.Id))
                 return Unauthorized();

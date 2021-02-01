@@ -1,19 +1,19 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace WebApi.Services.Dto.MercadoLibre.Country
 {
     public class Country
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("locale")]
+        [JsonProperty("locale")]
         public string Locale { get; set; }
 
-        [JsonPropertyName("currency_id")]
+        [JsonProperty("currency_id")]
         public string CurrencyId { get; set; }
     }
 }

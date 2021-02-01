@@ -8,7 +8,7 @@ namespace WebApi.ViewModel.Mappings
         public ResultMappingProfile()
         {
             CreateMap<Result, ResultViewModel>()
-                        .ForMember(x => x.SellerId, x => x.MapFrom(y => y.Seller.Id));
+                .ForMember(x => x.seller_id, x => x.MapFrom(y => y.Seller.Id));
         }
     }
 }
