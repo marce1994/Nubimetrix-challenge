@@ -25,11 +25,11 @@ namespace WebApi.Controllers
             var countriesResponse = await _mercadoLibre.Countries();
             var country = countriesResponse.SingleOrDefault(x => x.Id.Equals(pais, System.StringComparison.InvariantCultureIgnoreCase));
 
-            if (UnauthorizedCountries.Contains(country.Id))
-                return Unauthorized();
-            
             if (country == null)
                 return NotFound();
+
+            if (UnauthorizedCountries.Contains(country.Id))
+                return Unauthorized();
             
             return Ok(country);
         }
